@@ -1,0 +1,58 @@
+@use "./colors" as *;
+
+.announcements {
+  position: relative;
+
+  .dropdown {
+    padding: 0 0.5rem;
+    border-radius: 2rem;
+    border: none;
+    background-color: rgb(62, 59, 59);
+
+    .dropdown-menu {
+      padding-bottom: 1.5rem;
+      padding-inline: 1rem;
+      background-color: rgb(68, 63, 63);
+    }
+
+    svg {
+      color: $gray-light-600;
+    }
+  }
+
+  .select-group {
+    margin-block: 0.5rem;
+  }
+
+  label {
+    color: $gray-light-900;
+    background-color: #484040;
+  }
+
+  select {
+    display: block;
+    width: 100%;
+    padding-block: 0.5rem;
+    background: $gray-light-200;
+    color: $gray-light-600;
+    border-radius: 0.685rem;
+    margin-top: 0.5rem;
+    background-color: #4a4646;
+    border: 2px solid $gray-light-500;
+  }
+
+  .add--ann--button {
+    font-size: 3rem;
+    border-radius: 50%;
+    color: $accent;
+    position: fixed;
+    right: 2rem;
+    bottom: 5rem;
+  }
+
+  .card {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    height: auto;
+  }
+}

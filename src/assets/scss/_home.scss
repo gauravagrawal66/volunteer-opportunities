@@ -1,0 +1,88 @@
+@use "./colors" as *;
+
+.home {
+  .title {
+    color: $gray-light-900;
+    padding-block: 1.25rem;
+  }
+
+  .subtitle {
+    color: $accent;
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  .profile {
+    width: 100%;
+
+    .profile-data {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      img {
+        height: 4rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      span {
+        font-size: 0.875rem;
+        color: $gray-light-600;
+      }
+
+      .name {
+        color: $accent-light-100;
+        margin: 2px;
+      }
+
+      .points {
+        color: $accent-dark-200-bl;
+        margin: 2px;
+      }
+      .helped {
+        color: $gray-light-900;
+        margin: 2px;
+      }
+    }
+  }
+
+  .ann-container {
+    margin-block: 1rem;
+  }
+
+  .container-title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .show-hide-btn {
+      text-decoration: underline;
+      width: 2.75rem;
+      cursor: pointer;
+    }
+  }
+
+  .cards-container {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding-block: 1rem;
+
+    &.hide-container {
+      display: none;
+    }
+
+    &.show-container {
+      display: block;
+    }
+
+    .card {
+      display: inline-block;
+      margin-inline-end: 1rem;
+      white-space: normal;
+    }
+  }
+}

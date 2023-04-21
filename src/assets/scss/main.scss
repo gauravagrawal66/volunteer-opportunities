@@ -1,0 +1,350 @@
+@use "./colors" as *;
+@use "./swiper";
+@use "./form";
+@use "./nav";
+@use "./home";
+@use "./auth";
+@use "./spinner";
+@use "./card";
+@use "./dropdown";
+@use "./announces";
+@use "./settings";
+@use "./profile";
+@use "./messages";
+@use "./addannounce";
+@use "./conversation";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Love+Light&display=swap");
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $gray;
+}
+
+#app {
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+
+  position: relative;
+}
+
+.notFound {
+  height: calc(100vh - 5rem);
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  overflow-y: auto;
+
+  svg {
+    width: 100%;
+  }
+
+  h1 {
+    color: $accent-dark-400;
+    padding-block: 1rem;
+  }
+}
+
+section {
+  height: calc(100vh - 5rem);
+  overflow: scroll;
+  color: $gray-light-600;
+  padding: 1rem 2rem;
+
+  .title {
+    color: $accent;
+    font-size: 2rem;
+    margin-block: 1rem;
+  }
+}
+
+.error--message {
+  border: 2px solid $accent;
+  width: 100%;
+  padding: 1rem 2rem;
+  border-radius: 0.625rem;
+  color: $accent;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+
+  &.secondary {
+    border: none;
+    padding: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+}
+
+.success--modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background-color: $gray;
+  padding: 2rem;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  .modal--title {
+    margin-bottom: 2rem;
+    color: $accent;
+  }
+
+  .modal--subtitle {
+    span {
+      color: $accent;
+    }
+  }
+}
+
+.header {
+  width: 100%;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: $accent;
+  margin-bottom: 1rem;
+
+  button {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    color: $accent;
+    font-size: 3rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .card {
+    height: 150px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    .main--content {
+      height: 90px;
+      width: 100%;
+
+      .card--img {
+        height: 100%;
+        width: auto;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  html {
+    display: flex;
+    justify-content: center;
+  }
+
+  body {
+    width: 1200px;
+    position: relative;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .primary-nav {
+    width: 1200px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top: 0;
+    .navigation {
+      .navigation-links {
+        width: fit-content;
+        gap: 2rem;
+        margin-inline: auto;
+        .nav-link {
+          flex-direction: row;
+          gap: 0.5rem;
+          width: fit-content;
+        }
+      }
+    }
+  }
+
+  .login,
+  .register {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    .auth--content,
+    .auth--header {
+      padding: 2rem;
+    }
+    .auth--header {
+      background-color: $gray-light-100;
+      border-radius: 0.625rem;
+      width: 100%;
+    }
+    .auth--content {
+      width: 100%;
+    }
+  }
+
+  .announcements {
+    .card {
+      width: 350px;
+    }
+    .announces--content {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      gap: 2rem;
+      width: 100%;
+      height: 100%;
+      margin-top: 1rem;
+
+      .dropdown {
+        margin-block: 0;
+        border-radius: 0.625rem;
+      }
+
+      .filter {
+        width: 100%;
+        .dropdown-menu {
+          display: block !important;
+          padding-block: 1.5rem;
+        }
+        .dropdown-btn {
+          display: none;
+        }
+      }
+      .all--announces {
+        height: fit-content;
+        min-width: 716px;
+        width: 716px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+    }
+    .add--ann--button {
+      right: calc(300px - 3rem) !important;
+    }
+  }
+
+  section {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    .cards-container {
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  }
+
+  .home {
+    display: flex;
+    gap: 2rem;
+
+    .profile {
+      width: 30%;
+    }
+    .announces {
+      width: 70%;
+    }
+  }
+
+  .full--card {
+    width: 1200px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    margin-inline: auto;
+
+    .header {
+      cursor: pointer;
+    }
+
+    .card--content {
+      height: auto;
+      .flex--container {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+
+        .card--data {
+          font-size: 1rem;
+          min-height: auto;
+        }
+
+        .main--content {
+          width: 40%;
+        }
+
+        .sensitive--data {
+          width: 60%;
+          overflow-y: auto;
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      }
+    }
+  }
+
+  .announce--page,
+  .account {
+    width: 1200px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+  }
+
+  .conversation--page {
+    .conversation--card--messages {
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      -ms-overflow-style: none;
+    }
+  }
+}

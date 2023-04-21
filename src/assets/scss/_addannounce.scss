@@ -1,0 +1,57 @@
+@use "./colors" as *;
+
+.announce--page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: $gray;
+  z-index: 1000;
+  height: 100vh;
+  width: 100%;
+  padding: 2rem;
+  overflow-y: auto;
+
+  .page--content {
+    width: 100%;
+    height: 100%;
+
+    .main--information {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+
+      img {
+        display: block;
+        height: 10rem;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 0.625rem;
+      }
+
+      .personal--data {
+        height: auto;
+        width: 100%;
+
+        .input--field:nth-child(2) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .add--announce {
+    border: none;
+    border-radius: 1rem;
+    width: 100%;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    background: linear-gradient(to top right, $accent-dark-200, $accent-dark-700);
+    color: $gray-light-900;
+    cursor: pointer;
+  }
+}
+.countryValue{
+  color: black;
+}
